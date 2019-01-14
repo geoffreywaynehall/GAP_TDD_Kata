@@ -10,19 +10,31 @@ import com.icc.gap.kata.models.Item;
 public class CheckoutTests {
 
 	Checkout checkout;
-	Item blankItem;
+	Item badItem;
 	Item item;
 	
 	@Before
 	public void initialize() {
 		checkout = new Checkout();
-		blankItem = new Item();
 		item = new Item("A", 50);
 	}
 	
 	@Test
-	public void scanAnItem() {
-		Assert.assertTrue(checkout.scan(blankItem));
+	public void scanBlankItem() {
+		badItem = new Item();
+		Assert.assertFalse(checkout.scan(badItem));
+	}
+	
+	@Test
+	public void scanNullSkuItem() {
+		badItem = new Item(null, 50);
+		Assert.assertFalse(checkout.scan(badItem));
+	}
+	
+	@Test
+	public void scanNegetiveUnitPriceItem() {
+		badItem = new Item("A", -50);
+		Assert.assertFalse(checkout.scan(badItem));
 	}
 	
 	@Test
@@ -40,9 +52,10 @@ public class CheckoutTests {
 		Assert.assertEquals(50, item.getUnitPrice());
 	}
 	
-	@Test
-	public void getCheckoutTotal() {
-		checkout.scan(blankItem);
-		Assert.assertEquals(0, checkout.total());
-	}
+	
+//	@Test
+//	public void getCheckoutTotalForA() {
+//		checkout.scan(item);
+//		Assert.assertEquals(50, checkout.total());
+//	}
 }
