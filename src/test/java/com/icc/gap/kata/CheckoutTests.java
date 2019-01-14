@@ -26,4 +26,10 @@ public class CheckoutTests {
 		Item item = new Item("A", 50);
 		Assert.assertEquals("A", item.getSku());
 	}
+	
+	@Test
+	public void getItemUnitPrice() {
+		Item item = new Item("A", 50);
+		Assert.assertEquals(50, item.getUnitPrice());
+	}
 }

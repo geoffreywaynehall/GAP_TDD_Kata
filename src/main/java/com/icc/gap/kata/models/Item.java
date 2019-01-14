@@ -18,4 +18,8 @@ public class Item {
 		return this.sku;
 	}
 
+	public int getUnitPrice() {
+		return this.unitPrice;
+	}
+
 }
