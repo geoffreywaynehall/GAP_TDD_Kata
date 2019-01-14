@@ -15,4 +15,9 @@ public class CheckoutTests {
 		Assert.assertTrue(checkout.scan(item));
 	}
 	
+	@Test
+	public void createItemWithPrice() {
+		Item item = new Item("A", 50);
+		Assert.assertNotNull(item);
+	}
 }
