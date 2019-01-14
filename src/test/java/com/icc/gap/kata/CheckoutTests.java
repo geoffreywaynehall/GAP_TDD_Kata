@@ -37,4 +37,12 @@ public class CheckoutTests {
 	public void getItemUnitPrice() {
 		Assert.assertEquals(50, item.getUnitPrice());
 	}
+	
+	@Test
+	public void getCheckoutTotal() {
+		Checkout checkout = new Checkout();
+		Item blankItem = new Item();
+		checkout.scan(blankItem);
+		Assert.assertEquals(0, checkout.total());
+	}
 }

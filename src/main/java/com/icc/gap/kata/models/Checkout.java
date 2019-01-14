@@ -6,4 +6,8 @@ public class Checkout {
 		return true;
 	}
 	
+	public int total() {
+		return 0;
+	}
+	
 }
