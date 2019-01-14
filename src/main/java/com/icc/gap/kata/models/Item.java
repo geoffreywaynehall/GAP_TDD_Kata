@@ -13,5 +13,9 @@ public class Item {
 		this.sku = sku;
 		this.unitPrice = unitPrice;
 	}
+	
+	public String getSku() {
+		return this.sku;
+	}
 
 }

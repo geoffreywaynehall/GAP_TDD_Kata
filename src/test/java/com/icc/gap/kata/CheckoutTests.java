@@ -20,4 +20,10 @@ public class CheckoutTests {
 		Item item = new Item("A", 50);
 		Assert.assertNotNull(item);
 	}
+	
+	@Test
+	public void getItemSku() {
+		Item item = new Item("A", 50);
+		Assert.assertEquals("A", item.getSku());
+	}
 }

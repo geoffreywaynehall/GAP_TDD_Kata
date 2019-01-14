@@ -4,7 +4,6 @@
   <artifactId>gap.kata</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>GAP TDD Kata</name>
-  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -13,7 +12,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
   <build>
     <pluginManagement>
       <plugins>
@@ -29,5 +27,4 @@
       </plugins>
     </pluginManagement>
   </build>
-  
 </project>
