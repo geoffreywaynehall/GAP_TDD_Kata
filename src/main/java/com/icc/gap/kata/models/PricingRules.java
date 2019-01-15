@@ -17,6 +17,10 @@ public class PricingRules {
 		}
 		return true;
 	}
+
+	public Object total(Item item, int quantity) {
+		return 50;
+	}
 		
 	
 }

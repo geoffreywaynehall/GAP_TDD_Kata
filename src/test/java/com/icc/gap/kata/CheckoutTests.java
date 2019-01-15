@@ -66,6 +66,11 @@ public class CheckoutTests {
 		Assert.assertTrue(pricingRules.add(item, RuleNames.N_FOR_X));
 	}
 	
+	@Test
+	public void pricingRulesTotal() {
+		Assert.assertEquals(50, pricingRules.total(item, 1));
+	}
+	
 //	@Test
 //	public void getCheckoutTotalForA() {
 //		checkout.scan(item);
