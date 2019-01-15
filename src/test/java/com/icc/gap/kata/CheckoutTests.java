@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.icc.gap.kata.models.Checkout;
 import com.icc.gap.kata.models.Item;
+import com.icc.gap.kata.models.PricingRules;
 
 public class CheckoutTests {
 
@@ -52,6 +53,11 @@ public class CheckoutTests {
 		Assert.assertEquals(50, item.getUnitPrice());
 	}
 	
+	@Test
+	public void createPricingRules() {
+		PricingRules pricingRules = new PricingRules();
+		Assert.assertNotNull(pricingRules);
+	}
 	
 //	@Test
 //	public void getCheckoutTotalForA() {
