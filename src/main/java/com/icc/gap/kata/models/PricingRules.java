@@ -1,5 +1,7 @@
 package com.icc.gap.kata.models;
 
+import java.util.Map;
+
 import com.icc.gap.kata.utils.RuleNames;
 
 public class PricingRules {
@@ -8,9 +10,9 @@ public class PricingRules {
 		
 	}
 	
-	public boolean add(Item item, String ruleName) {
+	public boolean add(Item item, Rule rule) {
 		try {
-			RuleNames.class.getDeclaredField(ruleName);
+			RuleNames.class.getDeclaredField(rule.ruleName);
 		}
 		catch (Exception e) {
 			return false;
@@ -18,7 +20,12 @@ public class PricingRules {
 		return true;
 	}
 
-	public Object total(Item item, int quantity) {
+	public int total(Map<Item, Integer> items) {
+		
+		return nForX();
+	}
+	
+	private int nForX() {
 		return 50;
 	}
 		

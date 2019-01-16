@@ -1,5 +1,8 @@
 package com.icc.gap.kata;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,6 +10,7 @@ import org.junit.Test;
 import com.icc.gap.kata.models.Checkout;
 import com.icc.gap.kata.models.Item;
 import com.icc.gap.kata.models.PricingRules;
+import com.icc.gap.kata.models.Rule;
 import com.icc.gap.kata.utils.RuleNames;
 
 public class CheckoutTests {
@@ -15,11 +19,13 @@ public class CheckoutTests {
 	Item badItem;
 	Item item;
 	PricingRules pricingRules;
+	Rule rule;
 	
 	@Before
 	public void initialize() {
 		checkout = new Checkout();
 		item = new Item("A", 50);
+		rule = new Rule("A", RuleNames.N_FOR_X, 3, 130);
 		pricingRules = new PricingRules();
 	}
 	
@@ -62,14 +68,30 @@ public class CheckoutTests {
 	}
 	
 	@Test
+	public void createRule() {
+		Assert.assertNotNull(rule);
+	}
+	
+	@Test
 	public void addItemRule() {
-		Assert.assertTrue(pricingRules.add(item, RuleNames.N_FOR_X));
+		Assert.assertTrue(pricingRules.add(item, rule));
 	}
 	
 	@Test
 	public void pricingRulesTotal() {
-		Assert.assertEquals(50, pricingRules.total(item, 1));
+		Map<Item, Integer> items = new HashMap<Item, Integer>();
+		items.put(item, 1);
+		pricingRules.add(item, rule);
+		Assert.assertEquals(50, pricingRules.total(items));
 	}
+	
+//	@Test
+//	public void pricingRulesTotalMultipleItems() {
+//		Map<Item, Integer> items = new HashMap<Item, Integer>();
+//		items.put(item, 2);
+//		pricingRules.add(item, RuleNames.N_FOR_X, 3, 130);
+//		Assert.assertEquals(100, pricingRules.total(items));
+//	}
 	
 //	@Test
 //	public void getCheckoutTotalForA() {
