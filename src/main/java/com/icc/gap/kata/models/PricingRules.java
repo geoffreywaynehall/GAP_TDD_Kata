@@ -12,7 +12,7 @@ public class PricingRules {
 	
 	public boolean add(Item item, Rule rule) {
 		try {
-			RuleNames.class.getDeclaredField(rule.ruleName);
+			RuleNames.class.getDeclaredField(rule.getRuleName());
 		}
 		catch (Exception e) {
 			return false;
