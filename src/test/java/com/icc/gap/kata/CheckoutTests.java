@@ -81,17 +81,17 @@ public class CheckoutTests {
 	public void pricingRulesTotal() {
 		Map<Item, Integer> items = new HashMap<Item, Integer>();
 		items.put(item, 1);
-		pricingRules.add(item, rule);
+		Assert.assertTrue(pricingRules.add(item, rule));
 		Assert.assertEquals(50, pricingRules.total(items));
 	}
 	
-//	@Test
-//	public void pricingRulesTotalMultipleItems() {
-//		Map<Item, Integer> items = new HashMap<Item, Integer>();
-//		items.put(item, 2);
-//		pricingRules.add(item, RuleNames.N_FOR_X, 3, 130);
-//		Assert.assertEquals(100, pricingRules.total(items));
-//	}
+	@Test
+	public void pricingRulesTotalMultipleItems() {
+		Map<Item, Integer> items = new HashMap<Item, Integer>();
+		items.put(item, 2);
+		Assert.assertTrue(pricingRules.add(item, rule));
+		Assert.assertEquals(100, pricingRules.total(items));
+	}
 	
 //	@Test
 //	public void getCheckoutTotalForA() {
