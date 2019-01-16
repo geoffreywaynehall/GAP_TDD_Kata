@@ -34,7 +34,8 @@ public class PricingRules {
 	
 	private int nForX(Item item, int quantity, Rule rule) {
 		int total = 0;
-		total = item.getUnitPrice() * quantity;
+		total = rule.getSpecialPrice() * Math.floorDiv(quantity, rule.getSpecialQuantity());
+		total += item.getUnitPrice() * (quantity % rule.getSpecialQuantity());
 		return total;
 	}
 		
