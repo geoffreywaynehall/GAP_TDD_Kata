@@ -19,14 +19,17 @@ public class CheckoutTests {
 	Item badItem;
 	Item item;
 	PricingRules pricingRules;
+	PricingRules setPricingRules;
 	Rule rule;
 	
 	@Before
 	public void initialize() {
-		checkout = new Checkout();
 		item = new Item("A", 50);
 		rule = new Rule("A", RuleNames.N_FOR_X, 3, 130);
 		pricingRules = new PricingRules();
+		setPricingRules = new PricingRules();
+		setPricingRules.add(item, rule);
+		checkout = new Checkout(setPricingRules);
 	}
 	
 	@Test
@@ -101,9 +104,42 @@ public class CheckoutTests {
 		Assert.assertEquals(130, pricingRules.total(items));
 	}
 	
-//	@Test
-//	public void getCheckoutTotalForA() {
-//		checkout.scan(item);
-//		Assert.assertEquals(50, checkout.total());
-//	}
+	@Test
+	public void pricingRulesTotalForSevenUnits() {
+		Map<Item, Integer> items = new HashMap<Item, Integer>();
+		items.put(item, 7);
+		Assert.assertTrue(pricingRules.add(item, rule));
+		Assert.assertEquals(310, pricingRules.total(items));
+	}
+	
+	@Test
+	public void getCheckoutTotalForA() {
+		checkout.scan(item);
+		Assert.assertEquals(50, checkout.total());
+	}
+	
+	@Test
+	public void getCheckoutTotalForMultipleA() {
+		checkout.scan(item);
+		checkout.scan(item);
+		Assert.assertEquals(100, checkout.total());
+	}
+	
+	@Test
+	public void getCheckoutTotalForAWithRule() {
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		Assert.assertEquals(130, checkout.total());
+	}
+	
+	@Test
+	public void getCheckoutTotalForFiveA() {
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		Assert.assertEquals(230, checkout.total());
+	}
 }
