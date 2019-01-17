@@ -84,12 +84,12 @@ public class CheckoutTests {
 		Assert.assertEquals(230, checkout.total());
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void createCheckoutNull() {
 		new Checkout(null);
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void checkoutScanNull() {
 		checkout.scan(null);
 	}

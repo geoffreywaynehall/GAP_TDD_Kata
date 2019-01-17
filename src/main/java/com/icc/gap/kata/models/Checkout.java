@@ -11,14 +11,14 @@ public class Checkout {
 	
 	public Checkout (PricingRules pricingRules) {
 		if(null == pricingRules) {
-			throw new NullPointerException();
+			throw new IllegalArgumentException("pricingRules is null");
 		}
 		this.pricingRules = pricingRules;
 	}
 	
 	public boolean scan(Item item) {
 		if(null == item){
-			throw new NullPointerException();
+			throw new IllegalArgumentException("item is null");
 		}
 		if(null == item.getSku() || 0 >= item.getUnitPrice()) {
 			return false;
