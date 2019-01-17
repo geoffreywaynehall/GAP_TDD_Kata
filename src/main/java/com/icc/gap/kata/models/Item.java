@@ -22,4 +22,12 @@ public class Item {
 		return this.unitPrice;
 	}
 
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
 }

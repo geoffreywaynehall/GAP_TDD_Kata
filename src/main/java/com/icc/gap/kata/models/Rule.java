@@ -28,5 +28,21 @@ public class Rule {
 	public int getSpecialPrice() {
 		return this.specialPrice;
 	}
+
+	public void setItemSku(String itemSku) {
+		this.itemSku = itemSku;
+	}
+
+	public void setRuleName(String ruleName) {
+		this.ruleName = ruleName;
+	}
+
+	public void setSpecialQuantity(int specialQuantity) {
+		this.specialQuantity = specialQuantity;
+	}
+
+	public void setSpecialPrice(int specialPrice) {
+		this.specialPrice = specialPrice;
+	}
 	
 }
