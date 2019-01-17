@@ -32,6 +32,8 @@ public class CheckoutTests {
 		checkout = new Checkout(setPricingRules);
 	}
 	
+	// Checkout Tests
+	
 	@Test
 	public void scanBlankItem() {
 		badItem = new Item();
@@ -50,6 +52,40 @@ public class CheckoutTests {
 		Assert.assertFalse(checkout.scan(badItem));
 	}
 	
+
+	@Test
+	public void getCheckoutTotalForA() {
+		checkout.scan(item);
+		Assert.assertEquals(50, checkout.total());
+	}
+	
+	@Test
+	public void getCheckoutTotalForMultipleA() {
+		checkout.scan(item);
+		checkout.scan(item);
+		Assert.assertEquals(100, checkout.total());
+	}
+	
+	@Test
+	public void getCheckoutTotalForAWithRule() {
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		Assert.assertEquals(130, checkout.total());
+	}
+	
+	@Test
+	public void getCheckoutTotalForFiveA() {
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		checkout.scan(item);
+		Assert.assertEquals(230, checkout.total());
+	}
+	
+	// Item Tests
+	
 	@Test
 	public void createItemWithPrice() {
 		Assert.assertNotNull(item);
@@ -65,16 +101,14 @@ public class CheckoutTests {
 		Assert.assertEquals(50, item.getUnitPrice());
 	}
 	
+	// PricingRules Tests
+
 	@Test
 	public void createPricingRules() {
 		Assert.assertNotNull(pricingRules);
 	}
 	
-	@Test
-	public void createRule() {
-		Assert.assertNotNull(rule);
-	}
-	
+
 	@Test
 	public void addItemRule() {
 		Assert.assertTrue(pricingRules.add(item, rule));
@@ -112,34 +146,11 @@ public class CheckoutTests {
 		Assert.assertEquals(310, pricingRules.total(items));
 	}
 	
-	@Test
-	public void getCheckoutTotalForA() {
-		checkout.scan(item);
-		Assert.assertEquals(50, checkout.total());
-	}
+	// Rule Tests
 	
 	@Test
-	public void getCheckoutTotalForMultipleA() {
-		checkout.scan(item);
-		checkout.scan(item);
-		Assert.assertEquals(100, checkout.total());
+	public void createRule() {
+		Assert.assertNotNull(rule);
 	}
 	
-	@Test
-	public void getCheckoutTotalForAWithRule() {
-		checkout.scan(item);
-		checkout.scan(item);
-		checkout.scan(item);
-		Assert.assertEquals(130, checkout.total());
-	}
-	
-	@Test
-	public void getCheckoutTotalForFiveA() {
-		checkout.scan(item);
-		checkout.scan(item);
-		checkout.scan(item);
-		checkout.scan(item);
-		checkout.scan(item);
-		Assert.assertEquals(230, checkout.total());
-	}
 }
