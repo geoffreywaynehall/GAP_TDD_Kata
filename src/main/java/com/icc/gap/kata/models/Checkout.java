@@ -10,6 +10,9 @@ public class Checkout {
 	private PricingRules pricingRules;
 	
 	public Checkout (PricingRules pricingRules) {
+		if(null == pricingRules) {
+			throw new NullPointerException();
+		}
 		this.pricingRules = pricingRules;
 	}
 	

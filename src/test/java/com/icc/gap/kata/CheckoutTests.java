@@ -85,7 +85,12 @@ public class CheckoutTests {
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void getCheckoutScanNull() {
+	public void createCheckoutNull() {
+		new Checkout(null);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void checkoutScanNull() {
 		checkout.scan(null);
 	}
 	
