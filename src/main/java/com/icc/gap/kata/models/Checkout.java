@@ -20,8 +20,11 @@ public class Checkout {
 		if(null == item){
 			throw new IllegalArgumentException("item is null");
 		}
-		if(null == item.getSku() || 0 >= item.getUnitPrice()) {
-			return false;
+		if(null == item.getSku()) {
+			throw new IllegalArgumentException("item sku is null");
+		}
+		if(0 >= item.getUnitPrice()) {
+			throw new IllegalArgumentException("item unit price is not valid");
 		}
 		if(null == this.items.get(item)) {
 			this.items.put(item, 0);
