@@ -27,7 +27,12 @@ public class PricingRules {
 	public int total(Map<Item, Integer> items) {
 		int total = 0;
 		for (Map.Entry<Item, Integer> entry : items.entrySet()) {
-			total += nForX(entry.getKey(), entry.getValue(), this.rules.get(entry.getKey().getSku()));
+			if(this.rules.get(entry.getKey().getSku()) != null) {
+				total += nForX(entry.getKey(), entry.getValue(), this.rules.get(entry.getKey().getSku()));
+			}
+			else {
+				total += entry.getKey().getUnitPrice() * entry.getValue();
+			}
 		}
 		return total;
 	}

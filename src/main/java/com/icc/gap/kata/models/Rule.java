@@ -14,19 +14,19 @@ public class Rule {
 	}
 
 	public String getItemSku() {
-		return itemSku;
+		return this.itemSku;
 	}
 
 	public String getRuleName() {
-		return ruleName;
+		return this.ruleName;
 	}
 
 	public int getSpecialQuantity() {
-		return specialQuantity;
+		return this.specialQuantity;
 	}
 
 	public int getSpecialPrice() {
-		return specialPrice;
+		return this.specialPrice;
 	}
 	
 }

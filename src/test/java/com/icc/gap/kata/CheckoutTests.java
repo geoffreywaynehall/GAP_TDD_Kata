@@ -146,6 +146,13 @@ public class CheckoutTests {
 		Assert.assertEquals(310, pricingRules.total(items));
 	}
 	
+	@Test
+	public void pricingRulesTotalItemNoRule() {
+		Map<Item, Integer> items = new HashMap<Item, Integer>();
+		items.put(item, 3);
+		Assert.assertEquals(150, pricingRules.total(items));
+	}
+	
 	// Rule Tests
 	
 	@Test
