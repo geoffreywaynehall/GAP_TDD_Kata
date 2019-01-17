@@ -14,6 +14,9 @@ public class Checkout {
 	}
 	
 	public boolean scan(Item item) {
+		if(null == item){
+			throw new NullPointerException();
+		}
 		if(null == item.getSku() || 0 >= item.getUnitPrice()) {
 			return false;
 		}

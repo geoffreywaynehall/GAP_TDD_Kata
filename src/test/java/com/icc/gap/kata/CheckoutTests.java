@@ -84,6 +84,11 @@ public class CheckoutTests {
 		Assert.assertEquals(230, checkout.total());
 	}
 	
+	@Test(expected = NullPointerException.class)
+	public void getCheckoutScanNull() {
+		checkout.scan(null);
+	}
+	
 	// Item Tests
 	
 	@Test
