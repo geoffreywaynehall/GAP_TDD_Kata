@@ -14,6 +14,12 @@ public class PricingRules {
 	}
 	
 	public boolean add(Item item, Rule rule) throws Exception {
+		if(null == item){
+			throw new IllegalArgumentException("item is null");
+		}
+		if(null == rule){
+			throw new IllegalArgumentException("rule is null");
+		}
 		try {
 			RuleNames.class.getDeclaredField(rule.getRuleName());
 			this.rules.put(rule.getItemSku(), rule);
@@ -25,6 +31,9 @@ public class PricingRules {
 	}
 
 	public int total(Map<Item, Integer> items) {
+		if(null == items){
+			throw new IllegalArgumentException("items map is null");
+		}
 		int total = 0;
 		for (Map.Entry<Item, Integer> entry : items.entrySet()) {
 			Item item = entry.getKey();
@@ -40,6 +49,15 @@ public class PricingRules {
 	}
 	
 	private int nForX(Item item, int quantity, Rule rule) {
+		if(null == item){
+			throw new IllegalArgumentException("item is null");
+		}
+		if(0 > quantity){
+			throw new IllegalArgumentException("quantity is less than 0");
+		}
+		if(null == rule){
+			throw new IllegalArgumentException("rule is null");
+		}
 		int total = 0;
 		total = rule.getSpecialPrice() * Math.floorDiv(quantity, rule.getSpecialQuantity());
 		total += item.getUnitPrice() * (quantity % rule.getSpecialQuantity());

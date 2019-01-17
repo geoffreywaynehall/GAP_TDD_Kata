@@ -124,12 +124,27 @@ public class CheckoutTests {
 		Assert.assertTrue(pricingRules.add(item, rule));
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void addNullItem() throws Exception {
+		pricingRules.add(null, rule);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void addNullRule() throws Exception {
+		pricingRules.add(item, null);
+	}
+	
 	@Test
 	public void pricingRulesTotal() throws Exception {
 		Map<Item, Integer> items = new HashMap<Item, Integer>();
 		items.put(item, 1);
 		Assert.assertTrue(pricingRules.add(item, rule));
 		Assert.assertEquals(50, pricingRules.total(items));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void pricingRulesTotalNull() throws Exception {
+		pricingRules.total(null);
 	}
 	
 	@Test
