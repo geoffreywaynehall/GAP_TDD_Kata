@@ -23,7 +23,7 @@ public class CheckoutTests {
 	Rule rule;
 	
 	@Before
-	public void initialize() {
+	public void initialize() throws Exception {
 		item = new Item("A", 50);
 		rule = new Rule("A", RuleNames.N_FOR_X, 3, 130);
 		pricingRules = new PricingRules();
@@ -34,22 +34,22 @@ public class CheckoutTests {
 	
 	// Checkout Tests
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void scanBlankItem() {
 		badItem = new Item();
-		Assert.assertFalse(checkout.scan(badItem));
+		checkout.scan(badItem);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void scanNullSkuItem() {
 		badItem = new Item(null, 50);
-		Assert.assertFalse(checkout.scan(badItem));
+		checkout.scan(badItem);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void scanNegetiveUnitPriceItem() {
 		badItem = new Item("A", -50);
-		Assert.assertFalse(checkout.scan(badItem));
+		checkout.scan(badItem);
 	}
 	
 
@@ -120,12 +120,12 @@ public class CheckoutTests {
 	
 
 	@Test
-	public void addItemRule() {
+	public void addItemRule() throws Exception {
 		Assert.assertTrue(pricingRules.add(item, rule));
 	}
 	
 	@Test
-	public void pricingRulesTotal() {
+	public void pricingRulesTotal() throws Exception {
 		Map<Item, Integer> items = new HashMap<Item, Integer>();
 		items.put(item, 1);
 		Assert.assertTrue(pricingRules.add(item, rule));
@@ -133,7 +133,7 @@ public class CheckoutTests {
 	}
 	
 	@Test
-	public void pricingRulesTotalMultipleItems() {
+	public void pricingRulesTotalMultipleItems() throws Exception {
 		Map<Item, Integer> items = new HashMap<Item, Integer>();
 		items.put(item, 2);
 		Assert.assertTrue(pricingRules.add(item, rule));
@@ -141,7 +141,7 @@ public class CheckoutTests {
 	}
 	
 	@Test
-	public void pricingRulesTotalWithPricingRule() {
+	public void pricingRulesTotalWithPricingRule() throws Exception {
 		Map<Item, Integer> items = new HashMap<Item, Integer>();
 		items.put(item, 3);
 		Assert.assertTrue(pricingRules.add(item, rule));
@@ -149,7 +149,7 @@ public class CheckoutTests {
 	}
 	
 	@Test
-	public void pricingRulesTotalForSevenUnits() {
+	public void pricingRulesTotalForSevenUnits() throws Exception {
 		Map<Item, Integer> items = new HashMap<Item, Integer>();
 		items.put(item, 7);
 		Assert.assertTrue(pricingRules.add(item, rule));

@@ -13,13 +13,13 @@ public class PricingRules {
 		
 	}
 	
-	public boolean add(Item item, Rule rule) {
+	public boolean add(Item item, Rule rule) throws Exception {
 		try {
 			RuleNames.class.getDeclaredField(rule.getRuleName());
 			this.rules.put(rule.getItemSku(), rule);
 		}
 		catch (Exception e) {
-			return false;
+			throw e;
 		}
 		return true;
 	}
